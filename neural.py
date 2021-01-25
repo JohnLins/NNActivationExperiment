@@ -26,22 +26,23 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
     global weights
 
     lossHistory = []
+    #y = []
     for iteration in range(trainingIterations):
         
         loss = trainingOutputs - node(trainingInputs)
-        lossHistory = np.append(lossHistory,loss)
+        lossHistory = np.append(lossHistory, loss)
+        #y = np.append(y, iteration)
         
         adjustments = np.dot(trainingInputs.T, loss * activationDerivative(node(trainingInputs)))
-        
+        #lossHistory = np.append(lossHistory, adjustments)
+
         weights += adjustments
 
-    print(lossHistory)
+    #print(lossHistory)
     plt.title("Loss Graph")  
-    plt.xlabel("LOSS")
-
-    plt.ylabel("Y axis")  
-
-    plt.plot(lossHistory, (lossHistory * lossHistory), color ="red")  
+    plt.xlabel("Iterations")
+    plt.ylabel("LOSS")  
+    plt.plot(lossHistory, color ="red")  
     plt.show() 
 
 #RUN
@@ -49,7 +50,7 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
 
 
 #Data from data.py
-train(trainingInputs, trainingOutputs, 10000)
+train(trainingInputs, trainingOutputs, 500)
 #load()
 
 #save()
@@ -59,7 +60,7 @@ train(trainingInputs, trainingOutputs, 10000)
 
 
 inputs = [1, 1, 1, 1, \
-          1, 0, 0, 1, \
+          0, 1, 0, 1, \
           1, 0, 0, 1, \
           1, 1, 1, 1]          
 
