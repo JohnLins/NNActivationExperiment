@@ -22,10 +22,11 @@ def node(inputs):
     #WHERE THE MAGIC HAPPENS
     return activation(np.dot(inputs, weights))
 
+lossHistory = []
 def train(trainingInputs, trainingOutputs, trainingIterations):
     global weights
-
-    lossHistory = []
+    global lossHistory
+    
     #y = []
     for iteration in range(trainingIterations):
         
@@ -39,11 +40,7 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
         weights += adjustments
 
     #print(lossHistory)
-    plt.title("Loss Graph")  
-    plt.xlabel("Iterations")
-    plt.ylabel("LOSS")  
-    plt.plot(lossHistory, color ="red")  
-    plt.show() 
+    
 
 #RUN
 
@@ -69,6 +66,14 @@ print("Output: ", node(np.array(inputs)))
 
 
 #plot()
+
+
+
+plt.title("Loss Graph")  
+plt.xlabel("Iterations")
+plt.ylabel("LOSS")  
+plt.plot(lossHistory, color ="red")  
+plt.show() 
 
 
 
