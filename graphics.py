@@ -34,7 +34,7 @@ raw_data = renderer.tostring_rgb()
 ######################################
 
 
-
+from neural import *
 
 def graph(output, outputValue, lossHistory):
     print(output)
@@ -95,15 +95,16 @@ def graph(output, outputValue, lossHistory):
     # window.blit(StartText, (295,185))
     # window.blit(InstructionsText, (280,335))
 
-    runBtn = pygame.draw.rect(DISPLAY, BLUE, Rect((215, 150), (400,100)))
+    button = pygame.Rect((screenWidth/2) - 50, screenHeight - 120, 100, 50)
 
-    pos = pygame.mouse.get_pos()
-    (left,middle,right) = pygame.mouse.get_pressed()
-    if runBtn.collidepoint(pos):
-        runBtn = pygame.draw.rect(DISPLAY, (50,200,160), Rect((215, 150), (400,100)))
-        print("PRESSED")
+    # pos = pygame.mouse.get_pos()
+    # (left,middle,right) = pygame.mouse.get_pressed()
+    # if runBtn.collidepoint(pos):
+    #     runBtn = pygame.draw.rect(DISPLAY, (50,200,160), Rect((215, 150), (400,100)))
+    #     print("PRESSED")
     
     #############################
+    
 
 
     while True:
@@ -111,6 +112,29 @@ def graph(output, outputValue, lossHistory):
             if event.type==QUIT:
                 pygame.quit()
                 sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = event.pos  # gets mouse position
+
+                    # checks if mouse position is over the button
+
+                    if button.collidepoint(mouse_pos):
+                        # prints current location of mouse
+                        print('button was pressed at {0}'.format(mouse_pos))
+                        
+
+                        inputs = [1, 1, 1, 1, \
+                                0, 1, 0, 1, \
+                                1, 0, 0, 1, \
+                                1, 1, 1, 1]    
+
+                        print("Output: ", predict(np.array(inputs)))
+
+        pygame.draw.rect(screen, [55, 55, 0], button)
+
+
+
+
         pygame.display.update()
 
 

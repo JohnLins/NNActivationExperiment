@@ -10,5 +10,7 @@ print("Output: ", predict(np.array(inputs)))
 
 from graphics import *
 
-graph("X", 0.000324, [2, 1, .3, .2, .1, .0])
+output = graph("X", 0.000324, [2, 1, .3, .2, .1, .0])
+
+print(output)
 
