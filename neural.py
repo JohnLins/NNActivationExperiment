@@ -39,15 +39,26 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
 
         weights += adjustments
 
+train(trainingInputs, trainingOutputs, 500)
+
     #print(lossHistory)
     
+def predict(inputs):
+    inputs = inputs.astype(float) 
 
+    plt.title("Loss Graph")  
+    plt.xlabel("Iterations")
+    plt.ylabel("LOSS")  
+    plt.plot(lossHistory, color ="red")  
+    plt.show() 
+    
+    return node(inputs)
 #RUN
 
 
 
 #Data from data.py
-train(trainingInputs, trainingOutputs, 500)
+
 #load()
 
 #save()
@@ -56,12 +67,9 @@ train(trainingInputs, trainingOutputs, 500)
 
 
 
-inputs = [1, 1, 1, 1, \
-          0, 1, 0, 1, \
-          1, 0, 0, 1, \
-          1, 1, 1, 1]          
+      
 
-print("Output: ", node(np.array(inputs)))
+
 #predict(inputs)
 
 
@@ -69,11 +77,7 @@ print("Output: ", node(np.array(inputs)))
 
 
 
-plt.title("Loss Graph")  
-plt.xlabel("Iterations")
-plt.ylabel("LOSS")  
-plt.plot(lossHistory, color ="red")  
-plt.show() 
+
 
 
 

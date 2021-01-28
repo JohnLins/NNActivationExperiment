@@ -84,6 +84,27 @@ def graph(output, outputValue, lossHistory):
             
     #####################3
 
+    #RENDER BUTTON
+    #pygame.draw.rect(DISPLAY, BLUE, (150,450,100,50))
+    # myFont = pygame.font.SysFont("", 80)
+    # myFont2 = pygame.font.SysFont("", 50)
+    # GameName = myFont.render("Educational Maze Game", 1, (GREEN))
+    # StartText = myFont2.render("START GAME", 1, (BLUE))
+    # InstructionsText = myFont2.render("INSTRUCTIONS", 1, (BLUE))
+    # window.blit(GameName, (100,50))
+    # window.blit(StartText, (295,185))
+    # window.blit(InstructionsText, (280,335))
+
+    runBtn = pygame.draw.rect(DISPLAY, BLUE, Rect((215, 150), (400,100)))
+
+    pos = pygame.mouse.get_pos()
+    (left,middle,right) = pygame.mouse.get_pressed()
+    if runBtn.collidepoint(pos):
+        runBtn = pygame.draw.rect(DISPLAY, (50,200,160), Rect((215, 150), (400,100)))
+        print("PRESSED")
+    
+    #############################
+
 
     while True:
         for event in pygame.event.get():
