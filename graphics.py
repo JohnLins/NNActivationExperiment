@@ -73,7 +73,7 @@ def graph(output, outputValue, lossHistory):
     btnDim = 60
     positions = [[0 for row in range(0,4)] for col in range(0,4)]
     #color = [[BLUE, BLUE, BLUE, BLUE],[]]
-    color = BLUE
+    color = BLACK
     #active = [[],[]]
     levels = [-35.0, 35.0, -105.0, 105.0]
     for i in range(4):
@@ -81,10 +81,11 @@ def graph(output, outputValue, lossHistory):
             positions[i][j] = (screenWidth/2 - btnDim/2 + levels[j], screenHeight/2 - btnDim/2 + levels[i], btnDim, btnDim)
 
    
-    for i in range(4):
-        for j in range(4):
-            pygame.draw.rect(DISPLAY,color, positions[i][j])
 
+
+    print("positions", positions)
+    print((positions[0][0][0]))
+    print((positions[0][0][1]))
 
     #####################
 
@@ -108,7 +109,7 @@ def graph(output, outputValue, lossHistory):
     #     print("PRESSED")
     
     #############################
-    
+    clicked = [[0 for row in range(0,4)] for col in range(0,4)]
 
 
     while True:
@@ -136,11 +137,32 @@ def graph(output, outputValue, lossHistory):
 
                     print("X: ", mousePos[0])
                     print("Y: ", mousePos[1])
-                    if mousePos[0] >= 100 and mousePos[0] <= 200 and mousePos[1] >= 100 and mousePos[1] <= 200:
-                        color = BLACK
-                        print("CLICKED")
+                    # if mousePos[0] >= 100 and mousePos[0] <= 200 and mousePos[1] >= 100 and mousePos[1] <= 200:
+                    #     color = BLUE
+                    #     print("CLICKED")
+                    # if mousePos[0] >= (positions[0][0][0] - 30) and mousePos[0] <= (positions[0][0][0] + 30) and mousePos[1] >= (positions[0][0][1] - 30) and mousePos[1] <= (positions[0][0][1] + 30):
+                    #     color = BLUE
+                    #     print("CLICKED")
+                    for i in range(4):
+                        for j in range(4):
+                            if pygame.Rect(positions[i][j]).collidepoint(mousePos):
+                                color = BLUE
+                                clicked[i][j] = 1
+                                print(clicked)
+                                print("WOW")
+
+
+
+
+        for i in range(4):
+            for j in range(4):
+                pygame.draw.rect(DISPLAY, color, positions[i][j])
+
 
         pygame.draw.rect(screen, [55, 55, 0], button)
+
+
+
 
 
 
