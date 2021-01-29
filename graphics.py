@@ -49,6 +49,7 @@ def graph(output, outputValue, lossHistory):
     screen = pygame.display.get_surface()
 
     WHITE=(255,255,255)
+    BLACK = (0,0,0)
     BLUE=(0,0,255)
 
     DISPLAY.fill(WHITE)
@@ -71,6 +72,9 @@ def graph(output, outputValue, lossHistory):
     #RENDER BLOCKS
     btnDim = 60
     positions = [[0 for row in range(0,4)] for col in range(0,4)]
+    #color = [[BLUE, BLUE, BLUE, BLUE],[]]
+    color = BLUE
+    #active = [[],[]]
     levels = [-35.0, 35.0, -105.0, 105.0]
     for i in range(4):
         for j in range(4):
@@ -79,10 +83,10 @@ def graph(output, outputValue, lossHistory):
    
     for i in range(4):
         for j in range(4):
-            pygame.draw.rect(DISPLAY,BLUE, positions[i][j])
+            pygame.draw.rect(DISPLAY,color, positions[i][j])
 
-            
-    #####################3
+
+    #####################
 
     #RENDER BUTTON
     #pygame.draw.rect(DISPLAY, BLUE, (150,450,100,50))
@@ -114,21 +118,27 @@ def graph(output, outputValue, lossHistory):
                 sys.exit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse_pos = event.pos  # gets mouse position
+                    mousePos = event.pos  # gets mouse position
 
                     # checks if mouse position is over the button
 
-                    if button.collidepoint(mouse_pos):
+                    if button.collidepoint(mousePos):
                         # prints current location of mouse
-                        print('button was pressed at {0}'.format(mouse_pos))
+                        print('button was pressed at {0}'.format(mousePos))
                         
 
                         inputs = [1, 1, 1, 1, \
-                                0, 1, 0, 1, \
-                                1, 0, 0, 1, \
-                                1, 1, 1, 1]    
+                                  0, 1, 0, 1, \
+                                  1, 0, 0, 1, \
+                                  1, 1, 1, 1]    
 
                         print("Output: ", predict(np.array(inputs)))
+
+                    print("X: ", mousePos[0])
+                    print("Y: ", mousePos[1])
+                    if mousePos[0] >= 100 and mousePos[0] <= 200 and mousePos[1] >= 100 and mousePos[1] <= 200:
+                        color = BLACK
+                        print("CLICKED")
 
         pygame.draw.rect(screen, [55, 55, 0], button)
 
