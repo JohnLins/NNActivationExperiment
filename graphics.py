@@ -5,7 +5,9 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.backends.backend_agg as agg
 import pylab
+import numpy as np
 from activations import *
+
 
 #GRAPH ACTIVATION FUNCTION
 
@@ -35,6 +37,26 @@ raw_data = renderer.tostring_rgb()
 
 
 from neural import *
+
+def matrixToInputVec(inputM):
+    outputV = [[0 for row in range(0,4)] for col in range(0,4)]
+    outputV[1] = inputM[0]
+    outputV[2] = inputM[1]
+    outputV[0] = inputM[2]
+    outputV[3] = inputM[3]
+
+
+    output2V = [[0 for row in range(0,4)] for col in range(0,4)]
+
+    
+    for i in range(4):
+        output2V[i][1] = outputV[i][0]
+        output2V[i][2] = outputV[i][1]
+        output2V[i][0] = outputV[i][2]
+        output2V[i][3] = outputV[i][3]
+
+    return np.array(output2V).flatten()
+
 
 def graph(output, outputValue, lossHistory):
     print(output)
@@ -72,6 +94,7 @@ def graph(output, outputValue, lossHistory):
     #RENDER BLOCKS
     btnDim = 60
     positions = [[0 for row in range(0,4)] for col in range(0,4)]
+    colors = [[BLACK for row in range(0,4)] for col in range(0,4)]
     #color = [[BLUE, BLUE, BLUE, BLUE],[]]
     color = BLACK
     #active = [[],[]]
@@ -147,8 +170,11 @@ def graph(output, outputValue, lossHistory):
                         for j in range(4):
                             if pygame.Rect(positions[i][j]).collidepoint(mousePos):
                                 color = BLUE
+
                                 clicked[i][j] = 1
-                                print(clicked)
+                                colors[i][j] = BLUE
+
+                                print(matrixToInputVec(clicked))
                                 print("WOW")
 
 
@@ -156,7 +182,7 @@ def graph(output, outputValue, lossHistory):
 
         for i in range(4):
             for j in range(4):
-                pygame.draw.rect(DISPLAY, color, positions[i][j])
+                pygame.draw.rect(DISPLAY, colors[i][j], positions[i][j])
 
 
         pygame.draw.rect(screen, [55, 55, 0], button)
