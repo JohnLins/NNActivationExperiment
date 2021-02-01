@@ -1,11 +1,11 @@
 from neural import *
 
-inputs = [1, 1, 1, 1, \
-          0, 1, 0, 1, \
-          1, 0, 0, 1, \
-          1, 1, 1, 1]    
+# inputs = [1, 1, 1, 1, \
+#           0, 1, 0, 1, \
+#           1, 0, 0, 1, \
+#           1, 1, 1, 1]    
 
-print("Output: ", predict(np.array(inputs)))
+# print("Output: ", predict(np.array(inputs)))
 
 
 from graphics import *

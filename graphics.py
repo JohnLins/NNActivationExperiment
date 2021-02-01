@@ -7,16 +7,19 @@ import matplotlib.backends.backend_agg as agg
 import pylab
 import numpy as np
 from activations import *
+from neural import lossHistory
+            
 
 #from neural import *
 
 
 #GRAPH ACTIVATION FUNCTION
 
-fig = pylab.figure(figsize=[2, 2], # Inches
-                   dpi=100,        # 100 dots per inch, so the resulting buffer is 400x400 pixels
-                   )
-ax = fig.gca()
+actvFig = pylab.figure(figsize=[3.5, 3.5],dpi=100,)
+lossFig = pylab.figure(figsize=[2, 2], dpi=100,)
+
+actv = actvFig.gca()
+lossg = lossFig.gca()
 
 
 
@@ -29,12 +32,15 @@ while index <= 5.0:
 
 
 
-ax.plot(valueRange)
+actv.plot(valueRange)
+#lossg.plot(lossHistory)
 
-canvas = agg.FigureCanvasAgg(fig)
-canvas.draw()
-renderer = canvas.get_renderer()
-raw_data = renderer.tostring_rgb()
+actvCanvas = agg.FigureCanvasAgg(actvFig)
+actvCanvas.draw()
+actvRenderer = actvCanvas.get_renderer()
+actvRawData = actvRenderer.tostring_rgb()
+
+
 ######################################
 
 
@@ -79,9 +85,8 @@ def graph():
     DISPLAY.fill(WHITE)
 
     #GRAPH ACTIVATION
-    size = canvas.get_width_height()
-    surf = pygame.image.fromstring(raw_data, size, "RGB")
-    screen.blit(surf, (0,0))
+    screen.blit(pygame.image.fromstring(actvRawData, actvCanvas.get_width_height(), "RGB"), (0,0))
+    
     #pygame.display.flip()
     #######################
 
@@ -90,6 +95,7 @@ def graph():
     agg.ylabel("LOSS")  
     agg.plot(lossHistory, color ="red")  
     agg.show() """
+    #screen.blit(pygame.image.fromstring(raw_data, canvas.get_width_height(), "RGB"), (0,0))
 
     
 
@@ -143,6 +149,10 @@ def graph():
                 pygame.quit()
                 sys.exit()
 
+            
+            
+            
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                     mousePos = event.pos  # gets mouse position
 
@@ -153,14 +163,24 @@ def graph():
                         print('button was pressed at {0}'.format(mousePos))
                         
 
-                        inputs = [1, 1, 1, 1, \
-                                  0, 1, 0, 1, \
-                                  1, 0, 0, 1, \
-                                  1, 1, 1, 1]    
-                        npInputs = np.array(inputs) 
+                        # inputs = [1, 1, 1, 1, \
+                        #           0, 1, 0, 1, \
+                        #           1, 0, 0, 1, \
+                        #           1, 1, 1, 1]    
+                        # npInputs = np.array(inputs) 
 
-                        print("Output: ", predict(npInputs))
+                        #print("Output: ", predict(npInputs))
                         print("Output2: ", predict(matrixToInputVec(clicked)))
+
+                        #lossg.clear()
+                        lossg.plot(lossHistory)
+
+                        lossCanvas = agg.FigureCanvasAgg(lossFig)
+                        lossCanvas.draw()
+                        lossRenderer = lossCanvas.get_renderer()
+                        lossRawData = lossRenderer.tostring_rgb()
+
+                        screen.blit(pygame.image.fromstring(lossRawData, lossCanvas.get_width_height(), "RGB"), (0,0))
 
                     print("X: ", mousePos[0])
                     print("Y: ", mousePos[1])

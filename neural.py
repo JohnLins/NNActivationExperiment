@@ -41,7 +41,7 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
 
         weights += adjustments
 
-train(trainingInputs, trainingOutputs, 500)
+train(trainingInputs, trainingOutputs, 50)
 
     #print(lossHistory)
     
