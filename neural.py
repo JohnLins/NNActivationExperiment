@@ -31,12 +31,12 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
     
     #y = []
     for iteration in range(trainingIterations):
-        
-        loss = trainingOutputs - node(trainingInputs)
+        ouput = node(trainingInputs)
+        loss = trainingOutputs - ouput
         lossHistory = np.append(lossHistory, loss)
         #y = np.append(y, iteration)
         
-        adjustments = np.dot(trainingInputs.T, loss * activationDerivative(node(trainingInputs)))
+        adjustments = np.dot(trainingInputs.T, loss * activationDerivative(ouput))
         #lossHistory = np.append(lossHistory, adjustments)
 
         weights += adjustments
