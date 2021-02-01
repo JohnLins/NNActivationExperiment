@@ -3,17 +3,19 @@ import matplotlib.pyplot as plt
 #from termcolor import colored
 from data import trainingInputs, trainingOutputs
 
+from activations import *
+
 np.random.seed(1)
 
 #                                       _ number of elements in input
 weights = 2 * np.random.random((16, 1)) - 1
 
-e = np.exp(1)
+#e = np.exp(1)
 def activation(x):
-    return 1 / (1 + e**(-x))
+    return sigmoid(x)#1 / (1 + e**(-x))
  
 def activationDerivative(x):
-    return x * (1.0 - x)
+    return Dsigmoid(x)#x * (1.0 - x)
 
 
 def node(inputs):
@@ -46,13 +48,30 @@ train(trainingInputs, trainingOutputs, 500)
 def predict(inputs):
     inputs = inputs.astype(float) 
 
+    output = node(inputs)
+
     plt.title("Loss Graph")  
     plt.xlabel("Iterations")
     plt.ylabel("LOSS")  
     plt.plot(lossHistory, color ="red")  
     plt.show() 
+
+    slash = 1 - output
+    o = output - 0
+
+    if slash < o:
+        return output, "(Slash \\)"
+    elif o < slash:
+        return output, "(O)"
+    else:
+        return output, "Both"
+
+
     
-    return node(inputs)
+
+
+    
+   
 #RUN
 
 

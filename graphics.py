@@ -8,6 +8,8 @@ import pylab
 import numpy as np
 from activations import *
 
+#from neural import *
+
 
 #GRAPH ACTIVATION FUNCTION
 
@@ -58,10 +60,10 @@ def matrixToInputVec(inputM):
     return np.array(output2V).flatten()
 
 
-def graph(output, outputValue, lossHistory):
-    print(output)
-    print(outputValue)
-    print(lossHistory)
+def graph():
+    # print(output)
+    # print(outputValue)
+    # print(lossHistory)
 
     pygame.init()
     pygame.display.set_caption("John's GUI NN")
@@ -155,8 +157,10 @@ def graph(output, outputValue, lossHistory):
                                   0, 1, 0, 1, \
                                   1, 0, 0, 1, \
                                   1, 1, 1, 1]    
+                        npInputs = np.array(inputs) 
 
-                        print("Output: ", predict(np.array(inputs)))
+                        print("Output: ", predict(npInputs))
+                        print("Output2: ", predict(matrixToInputVec(clicked)))
 
                     print("X: ", mousePos[0])
                     print("Y: ", mousePos[1])
@@ -171,8 +175,13 @@ def graph(output, outputValue, lossHistory):
                             if pygame.Rect(positions[i][j]).collidepoint(mousePos):
                                 color = BLUE
 
-                                clicked[i][j] = 1
-                                colors[i][j] = BLUE
+                                if clicked[i][j] == 0:
+                                    clicked[i][j] = 1
+                                    colors[i][j] = BLUE
+                                else:
+                                    clicked[i][j] = 0
+                                    colors[i][j] = BLACK
+                                
 
                                 print(matrixToInputVec(clicked))
                                 print("WOW")
