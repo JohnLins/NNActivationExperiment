@@ -12,10 +12,10 @@ weights = 2 * np.random.random((16, 1)) - 1
 
 #e = np.exp(1)
 def activation(x):
-    return sigmoid(x)#1 / (1 + e**(-x))
+    return softplus(x)#1 / (1 + e**(-x))
  
 def activationDerivative(x):
-    return Dsigmoid(x)#x * (1.0 - x)
+    return Dsoftplus(x)#x * (1.0 - x)
 
 
 def node(inputs):
@@ -41,7 +41,7 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
 
         weights += adjustments
 
-train(trainingInputs, trainingOutputs, 50)
+train(trainingInputs, trainingOutputs, 200)
 
     #print(lossHistory)
     
@@ -53,16 +53,16 @@ def predict(inputs):
     plt.title("Loss Graph")  
     plt.xlabel("Iterations")
     plt.ylabel("LOSS")  
-    plt.plot(lossHistory, color ="red")  
-    plt.show() 
+    # plt.plot(lossHistory, color ="red")  
+    # plt.show() 
 
     slash = 1 - output
     o = output - 0
 
     if slash < o:
-        return output, "(Slash \\)"
+        return output, "Slash \\"
     elif o < slash:
-        return output, "(O)"
+        return output, "Letter O"
     else:
         return output, "Both"
 

@@ -26,7 +26,7 @@ lossg = lossFig.gca()
 valueRange = []
 index = -5.0
 while index <= 5.0:
-	valueRange.append(ReLU(index))
+	valueRange.append(isrlu(index))
 	index += .1
 
 
@@ -85,7 +85,7 @@ def graph():
     DISPLAY.fill(WHITE)
 
     #GRAPH ACTIVATION
-    screen.blit(pygame.image.fromstring(actvRawData, actvCanvas.get_width_height(), "RGB"), (0,0))
+    screen.blit(pygame.image.fromstring(actvRawData, actvCanvas.get_width_height(), "RGB"), (20,20))
     
     
 
@@ -106,9 +106,9 @@ def graph():
    
 
 
-    print("positions", positions)
-    print((positions[0][0][0]))
-    print((positions[0][0][1]))
+    # print("positions", positions)
+    # print((positions[0][0][0]))
+    # print((positions[0][0][1]))
 
     #####################
 
@@ -152,7 +152,7 @@ def graph():
 
                     if button.collidepoint(mousePos):
                         # prints current location of mouse
-                        print('button was pressed at {0}'.format(mousePos))
+                        #print('button was pressed at {0}'.format(mousePos))
                         
 
                         # inputs = [1, 1, 1, 1, \
@@ -183,12 +183,12 @@ def graph():
                         # Display output
                         ouputText = pygame.font.SysFont(None, 28).render( (str(output[1])) + " : " + str(output[0]), True, (0, 0, 255), (255, 255, 255))
                         ouputTextRect = ouputText.get_rect()
-                        ouputTextRect.centerx = screenWidth - 150
+                        ouputTextRect.centerx = screenWidth - 170
                         ouputTextRect.centery = screenHeight / 2
                         DISPLAY.blit(ouputText, ouputTextRect)
 
-                    print("X: ", mousePos[0])
-                    print("Y: ", mousePos[1])
+                    # print("X: ", mousePos[0])
+                    # print("Y: ", mousePos[1])
                     # if mousePos[0] >= 100 and mousePos[0] <= 200 and mousePos[1] >= 100 and mousePos[1] <= 200:
                     #     color = BLUE
                     #     print("CLICKED")
@@ -208,8 +208,8 @@ def graph():
                                     colors[i][j] = BLACK
                                 
 
-                                print(matrixToInputVec(clicked))
-                                print("WOW")
+                                # print(matrixToInputVec(clicked))
+                                # print("WOW")
 
 
 
