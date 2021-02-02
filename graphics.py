@@ -15,8 +15,8 @@ from neural import lossHistory
 
 #GRAPH ACTIVATION FUNCTION
 
-actvFig = pylab.figure(figsize=[3.5, 3.5],dpi=100,)
-lossFig = pylab.figure(figsize=[2, 2], dpi=100,)
+actvFig = pylab.figure(figsize=[2, 2],dpi=100,)
+lossFig = pylab.figure(figsize=[3.5, 3.5], dpi=100,)
 
 actv = actvFig.gca()
 lossg = lossFig.gca()
@@ -87,15 +87,7 @@ def graph():
     #GRAPH ACTIVATION
     screen.blit(pygame.image.fromstring(actvRawData, actvCanvas.get_width_height(), "RGB"), (0,0))
     
-    #pygame.display.flip()
-    #######################
-
-    """agg.title("Loss Graph")  
-    agg.xlabel("Iterations")
-    agg.ylabel("LOSS")  
-    agg.plot(lossHistory, color ="red")  
-    agg.show() """
-    #screen.blit(pygame.image.fromstring(raw_data, canvas.get_width_height(), "RGB"), (0,0))
+    
 
     
 
@@ -170,9 +162,11 @@ def graph():
                         # npInputs = np.array(inputs) 
 
                         #print("Output: ", predict(npInputs))
-                        print("Output2: ", predict(matrixToInputVec(clicked)))
+                        output = predict(matrixToInputVec(clicked))
+                        print("Output2: ", output)
 
                         #lossg.clear()
+                        
                         lossg.plot(lossHistory)
 
                         lossCanvas = agg.FigureCanvasAgg(lossFig)
@@ -180,7 +174,18 @@ def graph():
                         lossRenderer = lossCanvas.get_renderer()
                         lossRawData = lossRenderer.tostring_rgb()
 
-                        screen.blit(pygame.image.fromstring(lossRawData, lossCanvas.get_width_height(), "RGB"), (0,0))
+                        
+
+                        screen.blit(pygame.image.fromstring(lossRawData, lossCanvas.get_width_height(), "RGB"), (1,screenHeight/2 - 120))
+
+
+
+                        # Display output
+                        ouputText = pygame.font.SysFont(None, 28).render( (str(output[1])) + " : " + str(output[0]), True, (0, 0, 255), (255, 255, 255))
+                        ouputTextRect = ouputText.get_rect()
+                        ouputTextRect.centerx = screenWidth - 150
+                        ouputTextRect.centery = screenHeight / 2
+                        DISPLAY.blit(ouputText, ouputTextRect)
 
                     print("X: ", mousePos[0])
                     print("Y: ", mousePos[1])
