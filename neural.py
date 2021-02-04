@@ -1,21 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#from termcolor import colored
 from data import trainingInputs, trainingOutputs
 
 from activations import *
 
 np.random.seed(1)
 
-#                                       _ number of elements in input
+#                                    _ number of elements in input
 weights = 2 * np.random.random((16, 1)) - 1
 
-#e = np.exp(1)
+
 def activation(x):
-    return softplus(x)#1 / (1 + e**(-x))
+    return sigmoid(x)
  
 def activationDerivative(x):
-    return Dsoftplus(x)#x * (1.0 - x)
+    return Dsigmoid(x)
 
 
 def node(inputs):
@@ -28,23 +27,18 @@ lossHistory = []
 def train(trainingInputs, trainingOutputs, trainingIterations):
     global weights
     global lossHistory
-    
-    #y = []
+
     for iteration in range(trainingIterations):
         ouput = node(trainingInputs)
         loss = trainingOutputs - ouput
         lossHistory = np.append(lossHistory, loss)
-        #y = np.append(y, iteration)
         
         adjustments = np.dot(trainingInputs.T, loss * activationDerivative(ouput))
-        #lossHistory = np.append(lossHistory, adjustments)
 
         weights += adjustments
 
 train(trainingInputs, trainingOutputs, 200)
 
-    #print(lossHistory)
-    
 def predict(inputs):
     inputs = inputs.astype(float) 
 
@@ -68,31 +62,6 @@ def predict(inputs):
 
 
     
-
-
-    
-   
-#RUN
-
-
-
-#Data from data.py
-
-#load()
-
-#save()
-
-
-
-
-
-      
-
-
-#predict(inputs)
-
-
-#plot()
 
 
 

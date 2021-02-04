@@ -11,6 +11,11 @@ Softplus()    = log(1+exp(x))
 Binary Step() = if x >=0 : x = 1; if x < 0 : x = 0
 
 # Abstract
+What is the importance of figuring out what activation function works the best? Well, this brings us back to the importance of artificial neural networks.
+
+While my neural network simply recognized Os and slashes, when scales up, classification neural networks like this have been used in a plethora of ways such as recognizing tumours in radiology, assisting/helping the military better identify threats, and more.
+
+
 
 
 ## ---------------------------------------------------------
