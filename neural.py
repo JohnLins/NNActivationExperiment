@@ -11,10 +11,10 @@ weights = 2 * np.random.random((16, 1)) - 1
 
 
 def activation(x):
-    return sigmoid(x)
+    return johnStep(x)
  
 def activationDerivative(x):
-    return Dsigmoid(x)
+    return DjohnStep(x)
 
 
 def node(inputs):
@@ -29,15 +29,15 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
     global lossHistory
 
     for iteration in range(trainingIterations):
-        ouput = node(trainingInputs)
-        loss = trainingOutputs - ouput
+        output = node(trainingInputs)
+        loss = trainingOutputs - output
         lossHistory = np.append(lossHistory, loss)
         
-        adjustments = np.dot(trainingInputs.T, loss * activationDerivative(ouput))
+        adjustments = np.dot(trainingInputs.T, loss * activationDerivative(output))
 
         weights += adjustments
 
-train(trainingInputs, trainingOutputs, 200)
+train(trainingInputs, trainingOutputs, 10)
 
 def predict(inputs):
     inputs = inputs.astype(float) 

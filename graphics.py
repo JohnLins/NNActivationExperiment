@@ -22,7 +22,7 @@ lossg = lossFig.gca()
 valueRange = []
 index = -5.0
 while index <= 5.0:
-	valueRange.append(sigmoid(index))
+	valueRange.append(johnStep(index))
 	index += .1
 
 
@@ -64,7 +64,7 @@ def matrixToInputVec(inputM):
 def graph():
 
     pygame.init()
-    pygame.display.set_caption("John's GUI NN")
+    pygame.display.set_caption("John's GUI NN for the CCC Science Fair")
     screenHeight = 700
     screenWidth = 1000
     DISPLAY=pygame.display.set_mode((screenWidth, screenHeight),0,32)

@@ -85,31 +85,40 @@ The neural network that I'll be using has a simple task, recognizing patterns in
 ## The results
 
 # Sigmoid:
-To predict X:
-- Loss graph:
-- Output/prediction:
-To predict O:
+To predict Slash:
+<img src="results/sigmoid_slash.png"/>
 
-# ReLU:
-
-To predict X:
-- Loss graph:
-- Output/prediction:
 To predict O:
+<img src="results/sigmoid_O.png"/>
+
 
 # Binary Step:
+To predict Slash:
+<img src="results/step_slash.png"/>
 
-To predict X:
-- Loss graph:
-- Output/prediction:
 To predict O:
+<img src="results/step_O.png"/>
 
 # Softplus:
+To predict Slash:
+<img src="results/softplus_slash.png"/>
 
-To predict X:
-- Loss graph:
-- Output/prediction:
 To predict O:
+<img src="results/softplus_O.png"/>
+
+# JohnStep (My activation):
+To predict Slash:
+
+Works when presented training input:
+<img src="results/johnStep_slash_worked.png"/>
+
+Any alteration and it was incorrect:
+<img src="results/johnStep_slash_fail2.png"/>
+
+To predict O:
+<img src="results/johnStep_O.png"/>
+
+- Notice how my activation function was accurate for the letter O, but had somewhat of a bias toward the O since it only correctly predicted the slash when the inputs perfectly matched the training inputs.
 
 
 ## Conclusion 

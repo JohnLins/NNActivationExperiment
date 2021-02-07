@@ -2,33 +2,38 @@ import numpy as np
 e = np.exp(1)
 
 def sigmoid(x):
+    print("a:", 1 / (1 + e**(-x)))
+    print(type(x))
     return 1 / (1 + e**(-x))
 
 def Dsigmoid(x):
-    return x * (1.0 - x)  
+    return sigmoid(x) * (1.0 - sigmoid(x))  
 
+
+
+
+def binaryStepDemo(x):
+  if x >= 0.0:
+      return 1.0
+  else:
+      return 0.0
 
 def binaryStep(x):
-    if x >= 0:
-        return 1
+  y = []
+  for i in range(len(x)):
+    if x[i] >= [0.0]:
+      y.append([1.0])
     else:
-        return 0
+      y.append([0.0])
+  return np.array(y)
+  
         
 def DbinaryStep(x):
-    return 0
+    return np.array([[1.0] for row in range(0,len(x))])
 
 
-def ReLU(x):
-    if x > 0:
-        return x
-    else:
-        return 0
 
-def DReLU(x):
-    if x < 0:
-        return 0
-    else:
-        return 1;
+
 
 def softplus(x):
     return np.log(1+((e)**x))
@@ -37,6 +42,46 @@ def Dsoftplus(x):
     return 1/(1+((e)**-x))
 
 
+
+
+
+def johnStep(x):
+  return 1 / (1 + e**((-50*x)))
+
+def DjohnStep(x):
+  return johnStep(x)*(1.0*johnStep(x))
+
+
+"""
+
+def ReLUDemo(x):
+  if x > 0:
+      return x
+  else:
+      return 0
+
+def ReLU(x):
+  y = []
+  for i in range(len(x)):
+    if x[i] > [0.0]:
+      y.append([x])
+    else:
+      y.append([0.0])
+  return np.array(y)
+
+    
+def DReLU(x):
+  if x < 0:
+    return 0
+  else:
+    return 1
+  # y = []
+  # for i in range(len(x)):
+  #   if x[i] < [0.0]:
+  #     y.append([0.0])
+  #   else:
+  #     y.append([1.0])
+  # return np.array(y)
 
 
 
@@ -101,3 +146,4 @@ def Dsoftclip(x,a=0.01,p=1):
   def sech(x):
     return np.cosh(x)**(-1)
   return (0.5)*(np.sinh(p/2))*(sech((p*x)/2))*sech((p/2)*(1-x))
+"""
