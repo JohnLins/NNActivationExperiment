@@ -84,6 +84,9 @@ The neural network that I'll be using has a simple task, recognizing patterns in
 
 ## The results
 
+# Lab in action (Sigmoid)
+<img src="lab.gif"/>
+
 # Sigmoid:
 To predict Slash:
 <img src="results/sigmoid_slash.png"/>
