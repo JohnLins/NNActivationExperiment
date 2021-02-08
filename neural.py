@@ -11,10 +11,10 @@ weights = 2 * np.random.random((16, 1)) - 1
 
 
 def activation(x):
-    return johnStep(x)
+    return sigmoid(x)
  
 def activationDerivative(x):
-    return DjohnStep(x)
+    return Dsigmoid(x)
 
 
 def node(inputs):
