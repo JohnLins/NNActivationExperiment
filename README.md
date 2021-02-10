@@ -11,10 +11,26 @@ Softplus()    = log(1+exp(x))
 Binary Step() = if x >=0 : x = 1; if x < 0 : x = 0
 
 # Abstract
+
+In machine learning, artificial neural networks take advantage of what's called "activation functions". These functions determine the final output of a node/neuron and determines whether or not if should fire/synapses (Simularly to a real brain). 
+
+Determining what activation function to use is no easy task, but through trial and error, researchers have found some activation functions to be more affective for different tasks. 
+
+Developers building classification neural networks instinctively use what's called the sigmoid activation, although I'd like to challenge this, there must be another neural network with less loss. 
+
 What is the importance of figuring out what activation function works the best? Well, this brings us back to the importance of artificial neural networks.
+While this is a rather niche test case, when scaled up, classification neural networks like these have been used in a plethora of ways such as recognizing tumours in radiology, assisting/helping the military better identify threats, and more. 
 
-While my neural network simply recognized Os and slashes, when scales up, classification neural networks like this have been used in a plethora of ways such as recognizing tumours in radiology, assisting/helping the military better identify threats, and more.
+In my experiment, I will use the scientific method to determine which activation function is most suitable for recognizing slashes and Os in a 4 by 4 matrix of pixels.
 
+
+To determine this, I will render a loss graph for each activation function (The loss graph calculates the difference between the output and the preferred output over a period training iterations). The training data will be kept constant across all experiments, although I will change the input for thr sake of demonstration. This will not affect the accuracy of the experience however since the loss history is determined by the training data. The activation function I'll be testing includes the sigmoid, BinaryStep, Softplus, and the JohnStep(My own activation function). 
+
+My hypothesis is that the Binary Step will produce the most accurate prediction (When it's right) but the Sigmoid will produce the most accurate prediction over the most tests. 
+
+Or 
+
+The results I've found was that that the binary step and Sigmoid function were the most accurate, while my own activation along with the softplus were reasonable, but nevertheless the least accurate.
 
 
 
