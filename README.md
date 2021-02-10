@@ -111,7 +111,9 @@ To predict O:
 <img src="results/sigmoid_O.png"/>
 
 loss for slash = 1 - 0.97413512 = .02586488
+
 loss for O = 0.00015944 - 0 = 0.0015944
+
 average loss = (.02586488 + 0.0015944)/2 = **0.1301216**
 
 
@@ -123,7 +125,9 @@ To predict O:
 <img src="results/step_O.png"/>
 
 loss for slash = 1 - 1 = 0
+
 loss for O = 0 - 0 = 0
+
 average loss = (0 + 0)/2 = **0**
 
 # Softplus:
@@ -134,7 +138,9 @@ To predict O:
 <img src="results/softplus_O.png"/>
 
 loss for slash = 1 - 0.62859596 = .37140404
+
 loss for O = 0.00113348 - 0 = 0.00113348
+
 average loss = (.37140404 + .00113348)/2 = **0.18626326**
 
 # JohnStep (My activation):
@@ -150,8 +156,11 @@ To predict O:
 <img src="results/johnStep_O.png"/>
 
 loss for slash_1 = 1 - 0.999999474 = 5.26E-6
+
 loss for slash_2 = 1 - 3.36293543E-37 = 1
+
 loss for O = 8.04739358E-214 - 0 = 8.04739358E-214
+
 average loss = **(5.26E-6 + 1 + 8.04739358E-214)/3**
 
 - Notice how my activation function was accurate for the letter O, but had somewhat of a bias toward the O since it only correctly predicted the slash when the inputs perfectly matched the training inputs.
