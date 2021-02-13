@@ -166,6 +166,17 @@ average loss = **(5.26E-6 + 1 + 8.04739358E-214)/3**
 - Notice how my activation function was accurate for the letter O, but had somewhat of a bias toward the O since it only correctly predicted the slash when the inputs perfectly matched the training inputs.
 
 
+Since the inputs varided in the examples for the sake of demonstrating the model's predictbilty, below is a table of multiple test runs where all activation functions were given the xat same inputs.
+
+|  **Activation Function** |  **loss of Slash:**<img src="assets/slash1.png" height="40px"/> |  **loss of Slash:**<img src="assets/slash2.png" height="40px"/> |  **loss of O:**<img src="assets/o1.png" height="40px"/> |  **loss of O:**<img src="assets/o2.png" height="40px"/>  | **Average Loss** |
+|-|-|-|-|-|-|
+| Sigmoid (2nd place) | 0.04308203 | 0.00474277 | 0.00051447 | 0.00021294 | 0.01213811 |
+| Binary Step (Winner) | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Softplus (3rd place) | 0.32320652| 1.99036231 | 0.00069685 | 0.00076116 | 0.57875671 |
+| JohnStep (Last place) | 1 - 8.855796e-49 | 0.00000438  | 9.73265818e-233 | 2.81568323e-205 | TBC |
+
 ## Conclusion 
 
 The best activation function for this task was ---- I suspect this is because 
+
+The reason the Sofplus didn't do as well is becuase it does not range strictly from 0 to 1, instead it ranges from 0 to infinity this allows the output to be greator than 1 which is not usefull in this case.

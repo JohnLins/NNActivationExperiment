@@ -11,10 +11,10 @@ weights = 2 * np.random.random((16, 1)) - 1
 
 
 def activation(x):
-    return sigmoid(x)
+    return johnStep(x)
  
 def activationDerivative(x):
-    return Dsigmoid(x)
+    return DjohnStep(x)
 
 
 def node(inputs):
@@ -37,7 +37,7 @@ def train(trainingInputs, trainingOutputs, trainingIterations):
 
         weights += adjustments
 
-train(trainingInputs, trainingOutputs, 10)
+train(trainingInputs, trainingOutputs, 200)
 
 def predict(inputs):
     inputs = inputs.astype(float) 
