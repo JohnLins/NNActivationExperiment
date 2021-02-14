@@ -80,17 +80,17 @@ Well, we'll have to find out....
 
 In this experiment, I'll be testing the following activation functions:
 
-Sigmoid
-<insert graph>
+Sigmoid <br/>
+<img src="assets/Sigmoid.png"/>
 
-ReLU
-<insert graph>
+JohnStep <br/>
+<img src="assets/JohnStep.png"/>
 
-Binary Step
-<insert graph>
+Binary Step <br/>
+<img src="assets/BinaryStep.png"/>
 
-And softplus
-<insert graph>
+And Softplus <br/>
+<img src="assets/Softplus.png"/>
 
 
 The neural network that I'll be using has a simple task, recognizing patterns in matrix. More specifically, recognizing Xs and Os

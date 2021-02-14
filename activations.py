@@ -46,7 +46,7 @@ def Dsoftplus(x):
 
 
 def johnStep(x):
-  return 1 / (1 + e**((-50*x)))
+  return 1 / (1 + e**(-100*x))
 
 def DjohnStep(x):
   return johnStep(x)*(1.0*johnStep(x))
