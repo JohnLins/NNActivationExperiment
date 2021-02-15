@@ -22,7 +22,7 @@ lossg = lossFig.gca()
 valueRange = []
 index = -5.0
 while index <= 5.0:
-	valueRange.append(sigmoid(index))
+	valueRange.append(johnStep(index))
 	index += .1
 
 

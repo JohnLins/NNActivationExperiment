@@ -49,7 +49,7 @@ def johnStep(x):
   return 1 / (1 + e**(-100*x))
 
 def DjohnStep(x):
-  return johnStep(x)*(1.0*johnStep(x))
+  return johnStep(x)*(1.0 - johnStep(x))
 
 
 """
