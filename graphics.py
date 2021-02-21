@@ -64,7 +64,7 @@ def matrixToInputVec(inputM):
 def graph():
 
     pygame.init()
-    pygame.display.set_caption("John's GUI NN for the CCC Science Fair")
+    pygame.display.set_caption("John's GUI NN Project")
     screenHeight = 700
     screenWidth = 1000
     DISPLAY=pygame.display.set_mode((screenWidth, screenHeight),0,32)

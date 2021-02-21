@@ -47,8 +47,6 @@ def predict(inputs):
     plt.title("Loss Graph")  
     plt.xlabel("Iterations")
     plt.ylabel("LOSS")  
-    # plt.plot(lossHistory, color ="red")  
-    # plt.show() 
 
     slash = 1 - output
     o = output - 0

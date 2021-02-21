@@ -17,7 +17,7 @@ ax = fig.gca()
 valueRange = []
 index = -5.0
 while index <= 5.0:
-	valueRange.append(ReLU(index))
+	valueRange.append(sigmoid(index))
 	index += .1
 
 

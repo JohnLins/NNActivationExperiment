@@ -2,8 +2,6 @@ import numpy as np
 e = np.exp(1)
 
 def sigmoid(x):
-    print("a:", 1 / (1 + e**(-x)))
-    print(type(x))
     return 1 / (1 + e**(-x))
 
 def Dsigmoid(x):
@@ -50,6 +48,78 @@ def johnStep(x):
 
 def DjohnStep(x):
   return johnStep(x)*(1.0 - johnStep(x))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """
